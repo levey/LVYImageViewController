@@ -35,6 +35,8 @@
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     self.view.backgroundColor = [UIColor blackColor];
     
     self.scrollView = [[UIScrollView alloc] init];
@@ -71,9 +73,11 @@
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
     [self.scrollView addGestureRecognizer:longPress];
 
-    
-    __typeof(&*self) __unsafe_unretained uself = self;
     [self.activityIndicatorView startAnimating];
+
+    __typeof(&*self) __unsafe_unretained uself = self;
+    
+    // Use SDWebImageManager in case some buddy need to handle progress.
     [[SDWebImageManager sharedManager] downloadWithURL:[NSURL URLWithString:self.imageUrl] options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
         if (image) {
@@ -95,11 +99,8 @@
 
 - (void)handleTapGesture:(UIGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [self.view removeFromSuperview];
-
-        if ([self respondsToSelector:@selector(removeFromParentViewController)]) {
-            [self removeFromParentViewController];
-        }
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
     }
 }
 
