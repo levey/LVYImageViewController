@@ -95,11 +95,10 @@
 
 - (void)handleTapGesture:(UIGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
+        [self.view removeFromSuperview];
+
         if ([self respondsToSelector:@selector(removeFromParentViewController)]) {
-            [self.view removeFromSuperview];
             [self removeFromParentViewController];
-        } else {
-            [self.view removeFromSuperview];
         }
     }
 }

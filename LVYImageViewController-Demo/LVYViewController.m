@@ -20,16 +20,14 @@
 	
 }
 - (IBAction)showImage {
-    LVYImageViewController *ivc = [[LVYImageViewController alloc] initWithPlaceholderImage:[UIImage imageNamed:@"asuka.jpg"] imageUrl:@"http://photo2.bababian.com/upload5/20101105/9FBE2A149D137465EA950DF250EE3DB0.jpg"];
+    NSString *demoImageUrl = @"http://photo2.bababian.com/upload5/20101105/9FBE2A149D137465EA950DF250EE3DB0.jpg"; // Hope the links is not broken when you try it :)
+    LVYImageViewController *ivc = [[LVYImageViewController alloc] initWithPlaceholderImage:[UIImage imageNamed:@"asuka.jpg"] imageUrl:demoImageUrl];
     
-    [self addChildViewController:ivc];
+    if ([self respondsToSelector:@selector(addChildViewController:)]) {
+        [self addChildViewController:ivc];
+    }
     [self.view addSubview:ivc.view];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
