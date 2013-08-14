@@ -1,14 +1,12 @@
-### LVYImageViewController
+## LVYImageViewController
 
----
 
 LVYImageViewController can be used for single image viewer on full screen.
 
 It provide a placeholder image for preview, then downloading full resolution for display.
 
  
-#### Installation
----
+## Installation
 
 To use LVYImageViewController:
 
@@ -16,8 +14,7 @@ To use LVYImageViewController:
 2. Copy over the LVYImageViewController folder to your project folder.
 3. \#import "LVYImageViewController.h"
 
-#### Example Code
----
+## Example Code
 
     NSString *demoImageUrl = @"http://photo2.bababian.com/upload5/20101105/9FBE2A149D137465EA950DF250EE3DB0.jpg"; // Hope the links is not broken when you try it :)
     LVYImageViewController *ivc = [[LVYImageViewController alloc] initWithPlaceholderImage:[UIImage imageNamed:@"asuka.jpg"] imageUrl:demoImageUrl];
@@ -28,16 +25,14 @@ To use LVYImageViewController:
     [self.view addSubview:ivc.view];
     
     
-#### Notes
----
+## Notes
 
 * LVYImageViewController was made with ARC.
 * The demo is not well tested.
 
-#### License
----
+## License
 
-##### MIT License
+### MIT License
 
 Copyright (c) 2013 Levey ([http://golevey.com](http://golevey.com))
 
